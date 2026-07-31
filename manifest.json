@@ -1,6 +1,6 @@
 {
-  "name": "POS Restaurante",
-  "short_name": "POS",
+  "name": "VQ POS",
+  "short_name": "VQ POS",
   "description": "Aplicación de punto de venta para restaurante",
   "start_url": "./index.html",
   "scope": "./",
