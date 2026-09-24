@@ -78,52 +78,35 @@
     margin-top:6px; margin-bottom:14px;
   }
   .topbar h1{ font-size:calc(19px * var(--text-scale)); font-weight:700; }
+  .topbar-actions{ display:flex; align-items:center; gap:10px; }
+  .pending-btn{
+    position:relative;
+    display:flex; align-items:center; gap:4px;
+    padding:9px 14px; border-radius:14px;
+    border:1px solid var(--border); background:var(--card);
+    color:var(--ink); font-family:inherit; font-weight:700;
+    font-size:calc(12.5px * var(--text-scale)); cursor:pointer;
+  }
+  .pending-badge{
+    background:var(--orange); color:#fff; border-radius:10px;
+    padding:1px 6px; font-size:calc(10.5px * var(--text-scale)); font-weight:800;
+  }
+  .pending-scroll{
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:150px;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .pending-scroll::-webkit-scrollbar{ display:none; width:0; height:0; }
+  .status-pill.pending{ background:var(--orange-soft); color:var(--orange-deep); }
   .icon-btn{
     width:38px; height:38px; border-radius:12px;
     background:var(--card); border:1px solid var(--border);
     display:flex; align-items:center; justify-content:center;
     color:var(--ink); cursor:pointer;
-  }
-  .back-row{ display:flex; align-items:center; gap:14px; margin:6px 0 14px; }
-  .back-row h1{ flex:1; text-align:center; font-size:calc(17px * var(--text-scale)); font-weight:700; margin-right:38px;}
-
-  /* ---------- Search ---------- */
-  .search-bar{
-    display:flex; align-items:center; gap:10px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:12px 14px;
-    margin-bottom:16px;
-  }
-  .search-bar input{
-    border:none; outline:none; background:transparent;
-    font-family:inherit; font-size:calc(14px * var(--text-scale)); flex:1; color:var(--ink);
-  }
-  .search-bar input::placeholder{ color:var(--muted); }
-  .search-bar svg{ flex-shrink:0; }
-  .search-filter-btn{
-    position:relative; display:flex; align-items:center; justify-content:center;
-    cursor:pointer; flex-shrink:0; padding:2px;
-  }
-  .filter-dot{
-    position:absolute; top:-2px; right:-2px;
-    width:7px; height:7px; border-radius:50%;
-    background:var(--orange);
-  }
-  .filter-check-row{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 4px; border-bottom:1px solid var(--border);
-    font-size:calc(14px * var(--text-scale)); font-weight:600; color:var(--ink); cursor:pointer;
-  }
-  .filter-check-row:last-of-type{ border-bottom:none; }
-  .filter-checkbox{
-    width:22px; height:22px; border-radius:7px; border:1.5px solid var(--border);
-    background:var(--card); display:flex; align-items:center; justify-content:center;
-    flex-shrink:0;
-  }
-  .filter-checkbox.checked{
-    background:var(--orange); border-color:var(--orange); color:#fff; font-size:calc(13px * var(--text-scale)); font-weight:800;
   }
 
   /* ---------- Reporte de ventas ---------- */
@@ -136,18 +119,58 @@
   }
   .kpi-value{ font-size:calc(22px * var(--text-scale)); font-weight:800; color:var(--ink); margin-bottom:4px; }
   .kpi-label{ font-size:calc(11.5px * var(--text-scale)); font-weight:600; color:var(--muted); }
-  .insight-row{
+  .weekday-chart{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:6px; height:150px; padding-top:22px;
+  }
+  .weekday-bar-col{
+    flex:1; display:flex; flex-direction:column; align-items:center;
+    height:100%; min-width:0;
+  }
+  .weekday-bar-value{
+    font-size:calc(9.5px * var(--text-scale)); font-weight:700; color:var(--muted);
+    margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;
+  }
+  .weekday-bar-track{
+    flex:1; width:100%; display:flex; align-items:flex-end; justify-content:center;
+  }
+  .weekday-bar-fill{
+    width:65%; background:var(--orange); border-radius:6px 6px 0 0;
+    min-height:3px; transition:height .3s ease;
+  }
+  .weekday-bar-fill.today{ background:var(--orange-deep); }
+  .weekday-bar-label{
+    font-size:calc(10.5px * var(--text-scale)); font-weight:700; color:var(--ink); margin-top:6px;
+  }
+  .dual-chart-scroll{ width:100%; }
+  .dual-chart-card{ padding-left:2px; padding-right:2px; }
+  .dual-chart-scroll svg{ display:block; width:100%; height:190px; }
+  .dual-chart-filters{
+    display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
+    margin-top:12px; padding:12px 10px 0; border-top:1px solid var(--border);
+  }
+  .dual-filter-btn{
+    padding:7px 12px; border-radius:12px; border:1px solid var(--border);
+    background:var(--cream); color:var(--muted); font-family:inherit; font-weight:700;
+    font-size:calc(11.5px * var(--text-scale)); cursor:pointer;
+  }
+  .dual-filter-btn.active{ background:var(--orange); color:#fff; border-color:var(--orange); }
+  .top-product-row{
     display:flex; align-items:center; gap:12px;
-    background:var(--card); border-radius:14px; padding:12px 14px;
-    box-shadow:var(--shadow); margin-bottom:10px;
+    padding:11px 0; border-bottom:1px solid var(--border);
   }
-  .insight-icon{
-    width:34px; height:34px; border-radius:10px; background:var(--orange-soft);
-    display:flex; align-items:center; justify-content:center; font-size:calc(16px * var(--text-scale)); flex-shrink:0;
+  .top-product-row:last-child{ border-bottom:none; }
+  .top-product-rank{
+    width:26px; height:26px; border-radius:50%; background:var(--orange-soft); color:var(--orange-deep);
+    display:flex; align-items:center; justify-content:center; font-size:calc(12px * var(--text-scale)); font-weight:800; flex-shrink:0;
   }
-  .insight-mid{ flex:1; min-width:0; }
-  .insight-label{ font-size:calc(11px * var(--text-scale)); font-weight:600; color:var(--muted); margin-bottom:2px; }
-  .insight-value{ font-size:calc(14px * var(--text-scale)); font-weight:700; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .top-product-info{ flex:1; min-width:0; }
+  .top-product-name{
+    font-size:calc(13.5px * var(--text-scale)); font-weight:700; color:var(--ink);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .top-product-qty{ font-size:calc(11px * var(--text-scale)); color:var(--muted); font-weight:600; }
+  .top-product-total{ font-size:calc(13px * var(--text-scale)); font-weight:700; color:var(--ink); flex-shrink:0; }
 
   /* ---------- Configuración ---------- */
   .color-picker-card{
@@ -206,6 +229,11 @@
     min-height:0;
   }
   #screen-settings{
+    overflow-y:visible;
+    padding-bottom:0;
+    min-height:0;
+  }
+  #screen-pending{
     overflow-y:visible;
     padding-bottom:0;
     min-height:0;
@@ -317,18 +345,46 @@
     color:#fff;
   }
   .cart-bar .info{ display:flex; align-items:center; justify-content:space-between; }
+  .info-left{ display:flex; align-items:center; gap:6px; cursor:pointer; }
   .cart-bar .items{ font-size:calc(12px * var(--text-scale)); color:#c9c2b8; }
+  .breakdown-toggle{
+    display:flex; align-items:center; justify-content:center;
+    color:#c9c2b8; transition:transform .2s ease;
+  }
+  .cart-breakdown.expanded + .info .breakdown-toggle{ transform:rotate(180deg); }
   .cart-bar .total{ font-size:calc(17px * var(--text-scale)); font-weight:700; }
-  .cart-actions{ display:flex; gap:10px; }
+  .cart-breakdown{
+    max-height:0; overflow:hidden;
+    transition:max-height .25s ease, margin-bottom .25s ease;
+  }
+  .cart-breakdown.expanded{
+    max-height:180px; overflow-y:auto; margin-bottom:2px;
+  }
+  .cart-breakdown-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:7px 0; font-size:calc(12.5px * var(--text-scale));
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .cart-breakdown-row:last-child{ border-bottom:none; }
+  .cart-breakdown-row .name{ color:#f0ebe3; }
+  .cart-breakdown-row .qty{ color:#c9c2b8; margin-right:6px; }
+  .cart-breakdown-row .amount{ color:#fff; font-weight:600; flex-shrink:0; margin-left:10px; }
+  .cart-actions{ display:flex; gap:8px; }
   .cart-btn-cancel{
-    flex:1; background:transparent; color:#fff;
+    flex:0.9; background:transparent; color:#fff;
     border:1.5px solid rgba(255,255,255,0.25);
-    padding:11px; border-radius:14px; font-weight:600; font-size:calc(13.5px * var(--text-scale));
+    padding:11px 6px; border-radius:14px; font-weight:600; font-size:calc(12.5px * var(--text-scale));
+    font-family:inherit; cursor:pointer;
+  }
+  .cart-btn-pending{
+    flex:1; background:transparent; color:var(--orange);
+    border:1.5px solid var(--orange);
+    padding:11px 6px; border-radius:14px; font-weight:700; font-size:calc(12.5px * var(--text-scale));
     font-family:inherit; cursor:pointer;
   }
   .cart-btn-next{
-    flex:1.4; background:var(--orange); color:#fff; border:none;
-    padding:11px; border-radius:14px; font-weight:600; font-size:calc(13.5px * var(--text-scale));
+    flex:1.2; background:var(--orange); color:#fff; border:none;
+    padding:11px 6px; border-radius:14px; font-weight:600; font-size:calc(12.5px * var(--text-scale));
     font-family:inherit; cursor:pointer;
   }
 
@@ -379,7 +435,7 @@
     font-family:inherit; cursor:pointer; margin-top:10px;
   }
 
-  /* ---------- Toggle groups (Pedido / Método de Pago) ---------- */
+  /* ---------- Toggle groups ---------- */
   .toggle-group{ display:flex; gap:8px; }
   .toggle-btn{
     flex:1; padding:11px 6px; border-radius:12px;
@@ -389,9 +445,6 @@
   }
   .toggle-btn.active{
     background:var(--orange); color:#fff; border-color:var(--orange);
-  }
-  .toggle-group-3 .toggle-btn.small{
-    padding:9px 4px; font-size:calc(11px * var(--text-scale));
   }
 
   /* ---------- Transactions ---------- */
@@ -439,7 +492,6 @@
     background:var(--card); border-radius:16px; padding:12px 16px;
     box-shadow:var(--shadow); margin-bottom:12px;
   }
-  .field-row{ display:flex; gap:12px; }
   .field{ flex:1; }
   .field label{ font-size:calc(11px * var(--text-scale)); color:var(--muted); font-weight:600; display:block; margin-bottom:4px;}
   .field .val{ font-size:calc(14px * var(--text-scale)); font-weight:600; }
@@ -450,6 +502,12 @@
     font-family:inherit; cursor:pointer; margin-bottom:16px;
   }
   .section-label{ font-size:calc(13px * var(--text-scale)); font-weight:700; margin-bottom:10px; color:var(--ink); }
+  .edit-sale-banner{
+    display:flex; align-items:center; justify-content:center;
+    background:var(--orange-soft); color:var(--orange-deep);
+    border-radius:12px; padding:10px 14px; margin-bottom:12px;
+    font-size:calc(12.5px * var(--text-scale)); font-weight:700;
+  }
   .billing-item{
     display:flex; justify-content:space-between; align-items:center;
     padding:10px 0; border-bottom:1px solid var(--border); font-size:calc(13.5px * var(--text-scale));
@@ -460,11 +518,6 @@
     color:var(--orange-deep); font-weight:600; font-size:calc(13.5px * var(--text-scale));
     padding:10px 0; cursor:pointer;
   }
-  .note-display{
-    color:var(--ink); font-size:calc(13px * var(--text-scale)); line-height:1.5;
-    margin-bottom:10px; white-space:pre-wrap; word-break:break-word;
-    cursor:pointer;
-  }
   .total-card{
     background:var(--card); border-radius:16px; padding:16px;
     box-shadow:var(--shadow); margin:14px 0;
@@ -472,7 +525,6 @@
   .total-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
   .total-row .label{ font-size:calc(12px * var(--text-scale)); color:var(--muted); font-weight:600; }
   .total-row .value{ font-size:calc(20px * var(--text-scale)); font-weight:800; }
-  .confirm-actions{ display:flex; gap:12px; margin-top:8px; }
   .btn-cancel{
     flex:1; padding:14px; border-radius:16px; border:1.5px solid var(--border);
     background:var(--card); color:var(--ink); font-weight:700; font-size:calc(14px * var(--text-scale));
@@ -486,12 +538,15 @@
 
   /* ---------- Bottom nav ---------- */
   .bottom-nav{
-    position:absolute; bottom:14px; left:20px; right:20px;
+    position:fixed; left:50%; bottom:calc(14px + env(safe-area-inset-bottom));
+    transform:translateX(-50%);
+    width:calc(100% - 40px); max-width:560px;
     background:var(--navy);
     border-radius:26px;
     padding:10px 14px;
     display:flex; align-items:center; justify-content:space-between;
     box-shadow:0 14px 26px rgba(0,0,0,0.3);
+    z-index:20;
   }
   .nav-btn{
     flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
@@ -506,7 +561,7 @@
     gap:6px;
     padding:10px 14px;
   }
-  .nav-btn .label{ font-size:calc(11px * var(--text-scale)); font-weight:600; display:none;}
+  .nav-btn .label{ font-size:calc(11px * var(--text-scale)); font-weight:600; display:none; white-space:nowrap; }
   .nav-btn.active .label{ display:inline; }
   .toast{
     position:absolute; left:50%; top:70px; transform:translateX(-50%);
@@ -525,11 +580,19 @@
   <!-- ============ PANTALLA 1: GESTIÓN DE PRODUCTOS ============ -->
   <div class="screen" id="screen-pos">
     <div class="topbar">
-      <h1>Gestión de Productos</h1>
-      <div class="icon-btn" onclick="openAddModal()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      <h1>Productos</h1>
+      <div class="topbar-actions">
+        <button class="pending-btn" id="pendingNavBtn" onclick="goTo('screen-pending')">
+          Pendientes
+          <span class="pending-badge" id="pendingBadge" hidden>0</span>
+        </button>
+        <div class="icon-btn" onclick="openAddModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
       </div>
     </div>
+
+    <div class="edit-sale-banner" id="editSaleBanner" style="display:none;"></div>
 
     <div class="cat-row" id="catRow"></div>
 
@@ -538,20 +601,26 @@
     </div>
   </div>
 
+  <!-- ============ PANTALLA: PENDIENTES ============ -->
+  <div class="screen" id="screen-pending" hidden>
+    <div class="topbar">
+      <div class="icon-btn" onclick="goTo('screen-pos')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+      <h1>Pendientes</h1>
+      <div style="width:38px"></div>
+    </div>
+
+    <div class="pending-scroll">
+      <div class="sale-list" id="pendingList"></div>
+    </div>
+  </div>
+
   <!-- ============ PANTALLA 2: TRANSACCIONES ============ -->
   <div class="screen" id="screen-trans" hidden>
     <div class="topbar">
       <h1>Transacciones</h1>
       <div style="width:38px"></div>
-    </div>
-
-    <div class="search-bar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9086" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input id="transSearchInput" placeholder="Buscar ventas..." oninput="renderSaleList()">
-      <div class="search-filter-btn" id="searchFilterBtn" onclick="openSearchFilterModal()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E2A26" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-        <span class="filter-dot" id="searchFilterDot" hidden></span>
-      </div>
     </div>
 
     <div class="filter-card">
@@ -570,69 +639,10 @@
   </div>
 
   <!-- ============ PANTALLA 3: CONFIRMAR VENTA ============ -->
-  <div class="screen" id="screen-confirm" hidden>
-    <div class="back-row">
-      <div class="icon-btn" onclick="goTo('screen-pos')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-      </div>
-      <h1>Confirmar Venta</h1>
-    </div>
-
-    <div class="field-card">
-      <div class="field-row">
-        <div class="field">
-          <label>Número de Factura</label>
-          <div class="val" id="invoiceNum">1</div>
-        </div>
-        <div class="field">
-          <label>Fecha de Factura</label>
-          <div class="val" id="invoiceDate">--</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="field-card">
-      <label style="font-size:calc(11px * var(--text-scale));color:var(--muted);font-weight:600;display:block;margin-bottom:8px;">Pedido</label>
-      <div class="toggle-group">
-        <button class="toggle-btn active" id="btnDineIn" onclick="setOrderType('aqui')">Para Comer Aquí</button>
-        <button class="toggle-btn" id="btnTakeout" onclick="setOrderType('llevar')">Para Llevar</button>
-      </div>
-    </div>
-
-    <button class="btn-outline-full" onclick="goTo('screen-pos')">+ Agregar Más Artículos</button>
-
-    <div class="section-label" id="billingLabel">Artículos de Venta</div>
-    <div id="billingItems"></div>
-
-    <div class="link-row" onclick="openChargeModal()">＋ Agregar Cargo Adicional</div>
-    <div id="extraChargesList"></div>
-
-    <div class="link-row" id="addNoteRow" onclick="openNoteModal()">＋ Agregar Nota</div>
-    <div id="saleNoteDisplay"></div>
-
-    <div class="total-card">
-      <div class="total-row">
-        <span class="label">MONTO TOTAL</span>
-        <span class="value" id="confirmTotal">$0.00</span>
-      </div>
-      <label style="font-size:calc(11px * var(--text-scale));color:var(--muted);font-weight:600;display:block;margin-bottom:8px;">Método de Pago</label>
-      <div class="toggle-group toggle-group-3">
-        <button class="toggle-btn small active" id="payEfectivo" onclick="setPaymentMethod('Efectivo')">Efectivo</button>
-        <button class="toggle-btn small" id="payTarjeta" onclick="setPaymentMethod('Tarjeta')">Tarjeta</button>
-        <button class="toggle-btn small" id="payTransferencia" onclick="setPaymentMethod('Transferencia')">Transferencia</button>
-      </div>
-    </div>
-
-    <div class="confirm-actions">
-      <button class="btn-cancel" onclick="goTo('screen-pos')">Cancelar</button>
-      <button class="btn-save" onclick="finalizeSale()">Guardar Venta</button>
-    </div>
-  </div>
-
   <!-- ============ PANTALLA 4: REPORTE DE VENTAS ============ -->
   <div class="screen" id="screen-report" hidden>
     <div class="topbar">
-      <h1>Reporte de Ventas</h1>
+      <h1>Reporte</h1>
       <div style="width:38px"></div>
     </div>
 
@@ -644,16 +654,6 @@
         <span id="reportDateLabel">Hoy</span>
       </div>
       <div class="chip-btn" onclick="openReportDateFilterModal()">Cambiar</div>
-    </div>
-
-    <div class="filter-card">
-      <div class="left">
-        <div class="filter-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l3-4h12l3 4"/><path d="M3 7h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M9 11a3 3 0 006 0"/></svg>
-        </div>
-        <span id="reportProductFilterLabel">Todos</span>
-      </div>
-      <div class="chip-btn" onclick="openReportProductFilterModal()">Cambiar</div>
     </div>
 
     <div class="report-scroll">
@@ -676,36 +676,24 @@
         </div>
       </div>
 
-      <div class="section-label" style="margin-top:16px;">Indicadores</div>
+      <div class="section-label" style="margin-top:16px;">Ventas por Día de la Semana</div>
+      <div class="field-card">
+        <div class="weekday-chart" id="weekdayChart"></div>
+      </div>
 
-      <div class="insight-row">
-        <div class="insight-icon">🏆</div>
-        <div class="insight-mid">
-          <div class="insight-label">Producto Más Vendido</div>
-          <div class="insight-value" id="insightTopProduct">--</div>
+      <div class="section-label" style="margin-top:16px;">Histórico de Ventas y Tickets</div>
+      <div class="field-card dual-chart-card">
+        <div class="dual-chart-scroll" id="dualChartWrap"></div>
+        <div class="dual-chart-filters" id="dualChartFilters">
+          <button class="dual-filter-btn active" data-mode="semana" onclick="setDualChartMode('semana')">Semana</button>
+          <button class="dual-filter-btn" data-mode="mes" onclick="setDualChartMode('mes')">Mes</button>
+          <button class="dual-filter-btn" data-mode="anio" onclick="setDualChartMode('anio')">Año</button>
+          <button class="dual-filter-btn" data-mode="todo" onclick="setDualChartMode('todo')">Todo</button>
         </div>
       </div>
-      <div class="insight-row">
-        <div class="insight-icon">📂</div>
-        <div class="insight-mid">
-          <div class="insight-label">Categoría Más Vendida</div>
-          <div class="insight-value" id="insightTopCategory">--</div>
-        </div>
-      </div>
-      <div class="insight-row">
-        <div class="insight-icon">💳</div>
-        <div class="insight-mid">
-          <div class="insight-label">Método de Pago Más Usado</div>
-          <div class="insight-value" id="insightTopPayment">--</div>
-        </div>
-      </div>
-      <div class="insight-row">
-        <div class="insight-icon">🛍️</div>
-        <div class="insight-mid">
-          <div class="insight-label">Comer Aquí vs Para Llevar</div>
-          <div class="insight-value" id="insightOrderSplit">--</div>
-        </div>
-      </div>
+
+      <div class="section-label" style="margin-top:16px;">Top 8 Productos Más Vendidos</div>
+      <div class="field-card" id="topProductsList"></div>
     </div>
   </div>
 
@@ -730,9 +718,17 @@
       <div class="field-card color-picker-card">
         <div class="color-picker-info">
           <div class="color-picker-title">Color de fondo</div>
-          <div class="color-picker-sub">Fondo general de la aplicación</div>
+          <div class="color-picker-sub">Fondo general de la aplicación (modo claro)</div>
         </div>
         <div class="color-trigger" id="bgColorTrigger" onclick="openColorPickerModal('bg')"></div>
+      </div>
+
+      <div class="section-label" style="margin-top:16px;">Modo Oscuro</div>
+      <div class="field-card">
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="darkModeOffBtn" onclick="setDarkMode(false)">Claro</button>
+          <button class="toggle-btn" id="darkModeOnBtn" onclick="setDarkMode(true)">Oscuro</button>
+        </div>
       </div>
 
       <div class="section-label" style="margin-top:16px;">Tamaño del Texto</div>
@@ -768,21 +764,21 @@
 
   <!-- ============ NAV INFERIOR ============ -->
   <div class="bottom-nav">
-    <button class="nav-btn" id="nav-home" onclick="showToast('Próximamente')">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-    </button>
     <button class="nav-btn active" id="nav-pos" onclick="goTo('screen-pos')">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
-      <span class="label">POS</span>
+      <span class="label">Productos</span>
     </button>
     <button class="nav-btn" id="nav-trans" onclick="goTo('screen-trans')">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-3.5-7.1M21 4v5h-5"/></svg>
+      <span class="label">Transacciones</span>
     </button>
     <button class="nav-btn" id="nav-stats" onclick="goTo('screen-report')">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+      <span class="label">Reporte</span>
     </button>
     <button class="nav-btn" id="nav-settings" onclick="goTo('screen-settings')">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.23.5.7.85 1.24 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      <span class="label">Configuración</span>
     </button>
   </div>
 
@@ -828,13 +824,20 @@
 
   <!-- Barra de carrito flotante -->
   <div class="cart-bar" id="cartBar" style="display:none;">
+    <div class="cart-breakdown" id="cartBreakdown"></div>
     <div class="info">
-      <span class="items" id="cartItemsLabel">0 Artículos</span>
+      <div class="info-left" onclick="toggleCartBreakdown()">
+        <span class="items" id="cartItemsLabel">0 Artículos</span>
+        <span class="breakdown-toggle" id="breakdownToggleIcon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </div>
       <span class="total" id="cartTotalLabel">$0.00</span>
     </div>
     <div class="cart-actions">
       <button class="cart-btn-cancel" onclick="cancelSale()">Cancelar</button>
-      <button class="cart-btn-next" onclick="goToConfirm()">Siguiente</button>
+      <button class="cart-btn-pending" id="cartPendingBtn" onclick="handlePendingButton()">Pendiente</button>
+      <button class="cart-btn-next" id="cartConfirmBtn" onclick="handleConfirmButton()">Confirmar</button>
     </div>
   </div>
 
@@ -875,80 +878,6 @@
     </div>
   </div>
 
-  <!-- Modal: Cargo adicional -->
-  <div class="modal-overlay" id="chargeModal">
-    <div class="modal-sheet">
-      <div class="modal-title">Cargo Adicional</div>
-      <div class="modal-field">
-        <label>Concepto</label>
-        <input id="chargeConcept" type="text" placeholder="Ej. Propina, Empaque...">
-      </div>
-      <div class="modal-field">
-        <label>Cantidad</label>
-        <input id="chargeAmount" type="number" step="0.01" placeholder="0.00">
-      </div>
-      <div class="modal-actions">
-        <button class="btn-cancel" onclick="closeChargeModal()">Cancelar</button>
-        <button class="btn-save" onclick="addCharge()">Agregar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Nota de la venta -->
-  <div class="modal-overlay" id="noteModal">
-    <div class="modal-sheet">
-      <div class="modal-title">Nota de la Venta</div>
-      <div class="modal-field">
-        <label>Escribe una nota (ej. instrucciones especiales, sin cebolla, etc.)</label>
-        <textarea id="noteInput" rows="4" placeholder="Escribe aquí..." style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card); font-family:inherit; font-size:calc(14px * var(--text-scale)); color:var(--ink); outline:none; resize:none;"></textarea>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-cancel" onclick="closeNoteModal()">Cancelar</button>
-        <button class="btn-save" onclick="saveNote()">Guardar Nota</button>
-      </div>
-      <button class="modal-btn-delete" id="noteDeleteBtn" style="display:none;" onclick="removeNote()">Eliminar Nota</button>
-    </div>
-  </div>
-
-  <!-- Modal: Opciones de búsqueda -->
-  <div class="modal-overlay" id="searchFilterModal">
-    <div class="modal-sheet" style="max-height:85%; overflow-y:auto;">
-      <div class="modal-title">Filtrar Ventas</div>
-
-      <div class="section-label">Categoría</div>
-      <div id="filterCatList"></div>
-
-      <div class="section-label" style="margin-top:14px;">Pedido</div>
-      <div class="filter-check-row" onclick="toggleFilterValue('pedido','aqui','fv-pedido-aqui')">
-        <span>Para Comer Aquí</span>
-        <span class="filter-checkbox" id="fv-pedido-aqui"></span>
-      </div>
-      <div class="filter-check-row" onclick="toggleFilterValue('pedido','llevar','fv-pedido-llevar')">
-        <span>Para Llevar</span>
-        <span class="filter-checkbox" id="fv-pedido-llevar"></span>
-      </div>
-
-      <div class="section-label" style="margin-top:14px;">Método de Pago</div>
-      <div class="filter-check-row" onclick="toggleFilterValue('pago','Efectivo','fv-pago-Efectivo')">
-        <span>Efectivo</span>
-        <span class="filter-checkbox" id="fv-pago-Efectivo"></span>
-      </div>
-      <div class="filter-check-row" onclick="toggleFilterValue('pago','Tarjeta','fv-pago-Tarjeta')">
-        <span>Tarjeta</span>
-        <span class="filter-checkbox" id="fv-pago-Tarjeta"></span>
-      </div>
-      <div class="filter-check-row" onclick="toggleFilterValue('pago','Transferencia','fv-pago-Transferencia')">
-        <span>Transferencia</span>
-        <span class="filter-checkbox" id="fv-pago-Transferencia"></span>
-      </div>
-
-      <div class="modal-actions">
-        <button class="btn-cancel" onclick="clearSearchFilter()">Limpiar</button>
-        <button class="btn-save" onclick="applySearchFilter()">Aplicar</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Modal: Filtro por fecha (Reporte) -->
   <div class="modal-overlay" id="reportDateFilterModal">
     <div class="modal-sheet">
@@ -973,18 +902,6 @@
       <div class="modal-actions">
         <button class="btn-cancel" onclick="closeReportDateFilterModal()">Cancelar</button>
         <button class="btn-save" onclick="applyReportDateFilter()">Aplicar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Filtro por producto (Reporte) -->
-  <div class="modal-overlay" id="reportProductFilterModal">
-    <div class="modal-sheet" style="max-height:75%; overflow-y:auto;">
-      <div class="modal-title">Filtrar por Producto</div>
-      <div id="reportProductFilterList"></div>
-      <div class="modal-actions">
-        <button class="btn-cancel" onclick="clearReportProductFilter()">Limpiar</button>
-        <button class="btn-save" onclick="applyReportProductFilter()">Aplicar</button>
       </div>
     </div>
   </div>
@@ -1022,35 +939,70 @@
     <div class="modal-sheet" style="max-height:85%; overflow-y:auto;">
       <div class="modal-title" id="detailTitle">Venta #1</div>
       <div class="field-card" style="margin-bottom:12px;">
-        <div class="field-row">
-          <div class="field">
-            <label>Fecha</label>
-            <div class="val" id="detailDate">--</div>
-          </div>
-          <div class="field">
-            <label>Pedido</label>
-            <div class="val" id="detailOrderType">--</div>
-          </div>
+        <div class="field">
+          <label>Fecha</label>
+          <div class="val" id="detailDate">--</div>
         </div>
       </div>
       <div class="section-label">Artículos</div>
       <div id="detailItems"></div>
-      <div id="detailChargesWrap">
-        <div class="section-label" style="margin-top:10px;">Cargos Adicionales</div>
-        <div id="detailCharges"></div>
-      </div>
-      <div id="detailNoteWrap">
-        <div class="section-label" style="margin-top:10px;">Nota</div>
-        <div id="detailNote" class="note-display"></div>
-      </div>
       <div class="total-card">
         <div class="total-row">
           <span class="label">MONTO TOTAL</span>
           <span class="value" id="detailTotal">$0.00</span>
         </div>
-        <label style="font-size:calc(11px * var(--text-scale));color:var(--muted);font-weight:600;">Método de Pago: <span id="detailPayment" style="color:var(--ink);"></span></label>
       </div>
       <button class="btn-cancel" style="width:100%;" onclick="closeSaleDetail()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Modal: Acciones sobre una venta -->
+  <div class="modal-overlay" id="saleActionModal">
+    <div class="modal-sheet">
+      <div class="modal-title" id="saleActionTitle">Venta #1</div>
+      <button class="btn-outline-full" onclick="confirmEditSaleFromAction()">✎ Editar Venta</button>
+      <button class="modal-btn-delete" onclick="confirmDeleteSaleFromAction()">Eliminar Venta</button>
+      <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closeSaleActionModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Modal: Detalle de pedido pendiente -->
+  <div class="modal-overlay" id="pendingDetailModal">
+    <div class="modal-sheet" style="max-height:85%; overflow-y:auto;">
+      <div class="modal-title" id="pendingDetailTitle">Pendiente #1</div>
+      <div class="field-card" style="margin-bottom:12px;">
+        <div class="field">
+          <label>Fecha</label>
+          <div class="val" id="pendingDetailDate">--</div>
+        </div>
+      </div>
+      <div class="section-label">Artículos</div>
+      <div id="pendingDetailItems"></div>
+      <div class="total-card">
+        <div class="total-row">
+          <span class="label">MONTO TOTAL</span>
+          <span class="value" id="pendingDetailTotal">$0.00</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="modifyPendingFromDetail()">Modificar</button>
+        <button class="btn-save" onclick="confirmPendingFromDetail()">Confirmar</button>
+      </div>
+      <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closePendingDetail()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Modal: Confirmar eliminar pendiente -->
+  <div class="modal-overlay" id="deletePendingModal">
+    <div class="modal-sheet">
+      <div class="modal-title" id="deletePendingTitle">¿Eliminar Pendiente?</div>
+      <p style="font-size:calc(13px * var(--text-scale)); color:var(--muted); margin-bottom:16px;">
+        Esta acción no se puede deshacer.
+      </p>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeDeletePendingConfirm()">Cancelar</button>
+        <button class="modal-btn-delete" style="flex:1; margin-top:0;" onclick="confirmDeletePending()">Eliminar</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1079,10 +1031,9 @@ let activeCat = "Snacks";
 let cart = {}; // id -> qty
 let sales = [];
 let saleCounter = 1;
-let orderType = 'aqui';
-let paymentMethod = 'Efectivo';
-let extraCharges = []; // {concept, amount}
-let confirmSubtotal = 0;
+let pendingOrders = [];
+let pendingCounter = 1;
+let editingPendingNum = null;
 
 /* ---------------- ALMACENAMIENTO LOCAL ---------------- */
 const STORAGE_KEY = 'posAppState_v1';
@@ -1094,10 +1045,13 @@ function saveState(){
       categories,
       sales: sales.map(s => ({ ...s, date: s.date.toISOString() })),
       saleCounter,
+      pendingOrders: pendingOrders.map(p => ({ ...p, date: p.date.toISOString() })),
+      pendingCounter,
       cart,
       activeCat,
       themeColor,
       bgColor,
+      darkMode,
       textSize: currentTextSize,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -1137,10 +1091,15 @@ function loadState(){
       sales = data.sales.map(s => ({ ...s, date: new Date(s.date) }));
     }
     if(typeof data.saleCounter === 'number') saleCounter = data.saleCounter;
+    if(Array.isArray(data.pendingOrders)){
+      pendingOrders = data.pendingOrders.map(p => ({ ...p, date: new Date(p.date) }));
+    }
+    if(typeof data.pendingCounter === 'number') pendingCounter = data.pendingCounter;
     if(data.cart && typeof data.cart === 'object') cart = data.cart;
     if(data.activeCat) activeCat = data.activeCat;
     if(data.themeColor) applyThemeColor(data.themeColor);
     if(data.bgColor) applyBgColor(data.bgColor);
+    if(typeof data.darkMode === 'boolean') applyDarkMode(data.darkMode);
     if(data.textSize) currentTextSize = data.textSize;
   } catch(e){
     console.error('No se pudo cargar la información guardada', e);
@@ -1350,8 +1309,29 @@ function changeQty(id, delta){
 
 function renderCartBar(){
   const bar = document.getElementById('cartBar');
+  const banner = document.getElementById('editSaleBanner');
+  const pendingBtn = document.getElementById('cartPendingBtn');
   const ids = Object.keys(cart);
-  if(ids.length === 0){ bar.style.display = 'none'; return; }
+
+  if(editingSaleNum !== null){
+    banner.style.display = 'flex';
+    banner.textContent = `✎ Editando Venta #${editingSaleNum}`;
+    pendingBtn.style.display = 'none';
+  } else if(editingPendingNum !== null){
+    banner.style.display = 'flex';
+    banner.textContent = `📋 Modificando Pendiente #${editingPendingNum}`;
+    pendingBtn.style.display = 'block';
+  } else {
+    banner.style.display = 'none';
+    pendingBtn.style.display = 'block';
+  }
+
+  if(ids.length === 0){
+    bar.style.display = 'none';
+    cartBreakdownOpen = false;
+    document.getElementById('cartBreakdown').classList.remove('expanded');
+    return;
+  }
   bar.style.display = 'flex';
   let items = 0, total = 0;
   ids.forEach(id => {
@@ -1361,13 +1341,39 @@ function renderCartBar(){
   });
   document.getElementById('cartItemsLabel').textContent = items + (items===1 ? " Artículo" : " Artículos");
   document.getElementById('cartTotalLabel').textContent = fmt(total);
+  document.getElementById('cartConfirmBtn').textContent = editingSaleNum !== null ? 'Guardar Cambios' : 'Confirmar';
+  renderCartBreakdown();
+}
+
+let cartBreakdownOpen = false;
+
+function toggleCartBreakdown(){
+  cartBreakdownOpen = !cartBreakdownOpen;
+  document.getElementById('cartBreakdown').classList.toggle('expanded', cartBreakdownOpen);
+}
+
+function renderCartBreakdown(){
+  const container = document.getElementById('cartBreakdown');
+  const ids = Object.keys(cart);
+  container.innerHTML = ids.map(id => {
+    const p = products.find(pr => pr.id == id);
+    const qty = cart[id];
+    return `<div class="cart-breakdown-row">
+      <span class="name"><span class="qty">${qty}x</span>${escapeHtml(p.name)}</span>
+      <span class="amount">${fmt(p.price*qty)}</span>
+    </div>`;
+  }).join('');
 }
 
 function cancelSale(){
+  const wasEditingSale = editingSaleNum !== null;
+  const wasEditingPending = editingPendingNum !== null;
   cart = {};
+  editingSaleNum = null;
+  editingPendingNum = null;
   renderProducts();
   renderCartBar();
-  showToast('Venta cancelada');
+  showToast(wasEditingSale ? 'Edición cancelada' : (wasEditingPending ? 'Modificación cancelada' : 'Venta cancelada'));
   saveState();
 }
 
@@ -1393,101 +1399,14 @@ function goTo(screenId){
     document.getElementById('nav-settings').classList.add('active');
     renderCategoryManageList();
   }
-}
-
-function goToConfirm(){
-  if(Object.keys(cart).length === 0) return;
-  document.querySelectorAll('.screen').forEach(s => s.hidden = true);
-  document.getElementById('screen-confirm').hidden = false;
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('cartBar').style.display = 'none';
-
-  document.getElementById('invoiceNum').textContent = saleCounter;
-  const now = new Date();
-  const months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
-  document.getElementById('invoiceDate').textContent = `${String(now.getDate()).padStart(2,'0')} ${months[now.getMonth()]} ${now.getFullYear()}`;
-
-  let total = 0, itemCount = 0;
-  const rows = Object.keys(cart).map(id => {
-    const p = products.find(pr => pr.id == id);
-    const qty = cart[id];
-    total += p.price * qty;
-    itemCount++;
-    return `<div class="billing-item"><span><span class="qty">${qty}x</span>${escapeHtml(p.name)}</span><span>${fmt(p.price*qty)}</span></div>`;
-  }).join('');
-  document.getElementById('billingItems').innerHTML = rows;
-  document.getElementById('billingLabel').textContent = `Artículos de Venta (${itemCount})`;
-
-  confirmSubtotal = total;
-  extraCharges = [];
-  saleNote = '';
-  renderExtraCharges();
-  renderSaleNoteDisplay();
-  setOrderType('aqui');
-  setPaymentMethod('Efectivo');
-  updateConfirmTotal();
-}
-
-function updateConfirmTotal(){
-  const extra = extraCharges.reduce((sum, c) => sum + c.amount, 0);
-  document.getElementById('confirmTotal').textContent = fmt(confirmSubtotal + extra);
-}
-
-/* ---------------- PEDIDO (aquí / para llevar) ---------------- */
-function setOrderType(type){
-  orderType = type;
-  document.getElementById('btnDineIn').classList.toggle('active', type === 'aqui');
-  document.getElementById('btnTakeout').classList.toggle('active', type === 'llevar');
-}
-
-/* ---------------- MÉTODO DE PAGO ---------------- */
-function setPaymentMethod(method){
-  paymentMethod = method;
-  document.getElementById('payEfectivo').classList.toggle('active', method === 'Efectivo');
-  document.getElementById('payTarjeta').classList.toggle('active', method === 'Tarjeta');
-  document.getElementById('payTransferencia').classList.toggle('active', method === 'Transferencia');
-}
-
-/* ---------------- CARGO ADICIONAL ---------------- */
-function openChargeModal(){
-  document.getElementById('chargeConcept').value = '';
-  document.getElementById('chargeAmount').value = '';
-  document.getElementById('chargeModal').classList.add('show');
-}
-function closeChargeModal(){
-  document.getElementById('chargeModal').classList.remove('show');
-}
-function addCharge(){
-  const concept = document.getElementById('chargeConcept').value.trim();
-  const amount = parseFloat(document.getElementById('chargeAmount').value);
-  if(!concept || isNaN(amount) || amount <= 0){
-    showToast('Ingresa un concepto y cantidad válidos');
-    return;
+  if(screenId === 'screen-pending'){
+    renderPendingList();
   }
-  extraCharges.push({concept, amount});
-  closeChargeModal();
-  renderExtraCharges();
-  updateConfirmTotal();
-}
-function removeCharge(idx){
-  extraCharges.splice(idx, 1);
-  renderExtraCharges();
-  updateConfirmTotal();
-}
-function renderExtraCharges(){
-  const container = document.getElementById('extraChargesList');
-  container.innerHTML = extraCharges.map((c, i) => `
-    <div class="billing-item">
-      <span>${escapeHtml(c.concept)}</span>
-      <span style="display:flex;align-items:center;gap:10px;">
-        ${fmt(c.amount)}
-        <span style="color:var(--muted);cursor:pointer;font-weight:700;" onclick="removeCharge(${i})">✕</span>
-      </span>
-    </div>`).join('');
 }
 
-/* ---------------- NOTA DE LA VENTA ---------------- */
-let saleNote = '';
+function quickConfirmSale(){
+  finalizeSale();
+}
 
 function escapeHtml(str){
   const div = document.createElement('div');
@@ -1495,62 +1414,24 @@ function escapeHtml(str){
   return div.innerHTML;
 }
 
-function openNoteModal(){
-  document.getElementById('noteInput').value = saleNote;
-  document.getElementById('noteDeleteBtn').style.display = saleNote ? 'block' : 'none';
-  document.getElementById('noteModal').classList.add('show');
-}
-function closeNoteModal(){
-  document.getElementById('noteModal').classList.remove('show');
-}
-function saveNote(){
-  saleNote = document.getElementById('noteInput').value.trim();
-  closeNoteModal();
-  renderSaleNoteDisplay();
-}
-function removeNote(){
-  saleNote = '';
-  closeNoteModal();
-  renderSaleNoteDisplay();
-}
-function renderSaleNoteDisplay(){
-  const container = document.getElementById('saleNoteDisplay');
-  const addRow = document.getElementById('addNoteRow');
-  if(!saleNote){
-    container.innerHTML = '';
-    addRow.style.display = 'block';
-    return;
-  }
-  addRow.style.display = 'none';
-  container.innerHTML = `
-    <div class="note-display" onclick="openNoteModal()">📝 ${escapeHtml(saleNote)}</div>`;
-}
-
 function finalizeSale(){
+  if(Object.keys(cart).length === 0) return;
   const itemsDetail = Object.keys(cart).map(id => {
     const p = products.find(pr => pr.id == id);
     return { name: p.name, cat: p.cat, qty: cart[id], price: p.price };
   });
   const itemCount = itemsDetail.reduce((sum, it) => sum + it.qty, 0);
-  const extra = extraCharges.reduce((sum, c) => sum + c.amount, 0);
-  const total = confirmSubtotal + extra;
+  const total = itemsDetail.reduce((sum, it) => sum + it.price * it.qty, 0);
   const now = new Date();
   sales.unshift({
     num: saleCounter,
     total: total,
-    subtotal: confirmSubtotal,
     items: itemCount,
     itemsDetail: itemsDetail,
-    extraCharges: extraCharges.slice(),
-    note: saleNote,
     date: now,
-    orderType: orderType,
-    paymentMethod: paymentMethod,
   });
   saleCounter++;
   cart = {};
-  extraCharges = [];
-  saleNote = '';
   renderProducts();
   renderCartBar();
   showToast('Venta guardada correctamente');
@@ -1561,80 +1442,6 @@ function finalizeSale(){
 function formatSaleDate(d){
   const months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   return `${String(d.getDate()).padStart(2,'0')} ${months[d.getMonth()]} ${d.getFullYear()} · ${d.getHours()%12||12}:${String(d.getMinutes()).padStart(2,'0')}${d.getHours()>=12?'PM':'AM'}`;
-}
-
-let filterCategories = new Set();
-let filterPedidos = new Set();
-let filterPagos = new Set();
-
-function renderFilterCatList(){
-  const container = document.getElementById('filterCatList');
-  container.innerHTML = categories.map((c, i) => `
-    <div class="filter-check-row" onclick="toggleFilterValue('categoria', categories[${i}], 'fv-categoria-${i}')">
-      <span>${escapeHtml(c)}</span>
-      <span class="filter-checkbox ${filterCategories.has(c) ? 'checked' : ''}" id="fv-categoria-${i}">${filterCategories.has(c) ? '✓' : ''}</span>
-    </div>`).join('');
-}
-
-function toggleFilterValue(group, value, elId){
-  const setMap = { categoria: filterCategories, pedido: filterPedidos, pago: filterPagos };
-  const set = setMap[group];
-  const el = document.getElementById(elId);
-  if(set.has(value)){
-    set.delete(value);
-    el.classList.remove('checked');
-    el.textContent = '';
-  } else {
-    set.add(value);
-    el.classList.add('checked');
-    el.textContent = '✓';
-  }
-}
-
-function openSearchFilterModal(){
-  document.getElementById('searchFilterModal').classList.add('show');
-}
-function closeSearchFilterModal(){
-  document.getElementById('searchFilterModal').classList.remove('show');
-}
-function clearSearchFilter(){
-  filterCategories.clear();
-  filterPedidos.clear();
-  filterPagos.clear();
-  document.querySelectorAll('#searchFilterModal .filter-checkbox').forEach(el => {
-    el.classList.remove('checked');
-    el.textContent = '';
-  });
-  document.getElementById('searchFilterDot').hidden = true;
-  renderSaleList();
-}
-function applySearchFilter(){
-  const anyActive = filterCategories.size || filterPedidos.size || filterPagos.size;
-  document.getElementById('searchFilterDot').hidden = !anyActive;
-  closeSearchFilterModal();
-  renderSaleList();
-}
-
-function saleMatchesStructuredFilters(s){
-  if(filterCategories.size > 0){
-    const cats = new Set(s.itemsDetail.map(it => it.cat));
-    if(![...filterCategories].some(c => cats.has(c))) return false;
-  }
-  if(filterPedidos.size > 0 && !filterPedidos.has(s.orderType)) return false;
-  if(filterPagos.size > 0 && !filterPagos.has(s.paymentMethod)) return false;
-  return true;
-}
-
-function saleMatchesSearch(s, term){
-  if(!term) return true;
-  const orderLabel = s.orderType === 'llevar' ? 'para llevar' : 'para comer aquí';
-  const haystack = [
-    ...s.itemsDetail.map(it => it.name),
-    ...s.itemsDetail.map(it => it.cat),
-    orderLabel,
-    s.paymentMethod,
-  ].join(' ').toLowerCase();
-  return haystack.includes(term);
 }
 
 function saleMatchesDate(s){
@@ -1656,8 +1463,6 @@ let reportDateMode = 'day';
 let reportDateDay = (() => { const d = new Date(); d.setHours(0,0,0,0); return d; })();
 let reportDateStart = null;
 let reportDateEnd = null;
-let reportProductFilter = new Set();
-let reportProductNames = [];
 
 function openReportDateFilterModal(){
   setReportDateFilterMode(reportDateMode);
@@ -1714,77 +1519,190 @@ function saleMatchesReportDate(s){
   return true;
 }
 
-function getReportProductNames(){
-  const set = new Set();
-  products.forEach(p => set.add(p.name));
-  sales.forEach(s => s.itemsDetail.forEach(it => set.add(it.name)));
-  return [...set].sort((a,b) => a.localeCompare(b, 'es'));
+function fmtCompact(n){
+  if(n >= 1000) return '$' + (n/1000).toFixed(1).replace(/\.0$/,'') + 'k';
+  return '$' + Math.round(n);
 }
 
-function renderReportProductFilterList(){
-  reportProductNames = getReportProductNames();
-  const container = document.getElementById('reportProductFilterList');
-  if(reportProductNames.length === 0){
-    container.innerHTML = `<div class="empty-msg" style="padding:12px 0;">Aún no hay productos registrados.</div>`;
+/* ---------------- GRÁFICA DE DOBLE EJE: VENTAS Y TICKETS POR SEMANA ---------------- */
+function niceMax(n){
+  if(n <= 0) return 1;
+  const pow = Math.pow(10, Math.floor(Math.log10(n)));
+  const norm = n / pow;
+  let niceNorm;
+  if(norm <= 1) niceNorm = 1;
+  else if(norm <= 2) niceNorm = 2;
+  else if(norm <= 5) niceNorm = 5;
+  else niceNorm = 10;
+  return niceNorm * pow;
+}
+
+/* ---------------- GRÁFICA: VENTAS Y TICKETS (Día / Semana / Mes / Año / Todo) ---------------- */
+let dualChartMode = 'semana';
+
+function setDualChartMode(mode){
+  dualChartMode = mode;
+  document.querySelectorAll('.dual-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === mode);
+  });
+  renderDualChart();
+}
+
+const dualChartMonthsAbbr = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+function buildDualChartBuckets(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  if(sales.length === 0) return [];
+
+  if(dualChartMode === 'anio'){
+    const buckets = [];
+    for(let i = 11; i >= 0; i--){
+      const d = new Date(today.getFullYear(), today.getMonth()-i, 1);
+      const end = new Date(d.getFullYear(), d.getMonth()+1, 0);
+      buckets.push({ start: d, end, label: `${dualChartMonthsAbbr[d.getMonth()]} ${String(d.getFullYear()).slice(2)}` });
+    }
+    return buckets;
+  }
+
+  if(dualChartMode === 'todo'){
+    const minDate = sales.reduce((min, s) => s.date < min ? s.date : min, sales[0].date);
+    const numMonths = (today.getFullYear()-minDate.getFullYear())*12 + (today.getMonth()-minDate.getMonth()) + 1;
+    const buckets = [];
+    for(let i = 0; i < numMonths; i++){
+      const d = new Date(minDate.getFullYear(), minDate.getMonth()+i, 1);
+      const end = new Date(d.getFullYear(), d.getMonth()+1, 0);
+      const label = `${dualChartMonthsAbbr[d.getMonth()]} ${String(d.getFullYear()).slice(2)}`;
+      buckets.push({ start: d, end, label });
+    }
+    return buckets;
+  }
+
+  const numDays = dualChartMode === 'semana' ? 7 : 30;
+  const buckets = [];
+  for(let i = numDays - 1; i >= 0; i--){
+    const d = new Date(today); d.setDate(d.getDate() - i);
+    buckets.push({ start: d, end: d, label: `${String(d.getDate()).padStart(2,'0')} ${dualChartMonthsAbbr[d.getMonth()]}` });
+  }
+  return buckets;
+}
+
+function renderDualChart(){
+  const wrap = document.getElementById('dualChartWrap');
+  const buckets = buildDualChartBuckets();
+
+  if(buckets.length === 0){
+    wrap.innerHTML = `<div class="empty-msg" style="padding:20px 0;">Aún no hay ventas suficientes para esta gráfica.</div>`;
     return;
   }
-  container.innerHTML = reportProductNames.map((name, i) => `
-    <div class="filter-check-row" onclick="toggleReportProductFilter(${i})">
-      <span>${name}</span>
-      <span class="filter-checkbox ${reportProductFilter.has(name) ? 'checked' : ''}" id="rpf-${i}">${reportProductFilter.has(name) ? '✓' : ''}</span>
-    </div>`).join('');
+
+  const data = buckets.map(b => {
+    const matching = sales.filter(s => {
+      const d = new Date(s.date.getFullYear(), s.date.getMonth(), s.date.getDate());
+      return d >= b.start && d <= b.end;
+    });
+    return { label: b.label, total: matching.reduce((sum,s)=>sum+s.total,0), count: matching.length };
+  });
+
+  const leftMargin = 22;
+  const rightMargin = 14;
+  const plotHeight = 150;
+  const xLabelHeight = 28;
+  const topPad = 14;
+  const svgWidth = 300;
+  const plotWidth = svgWidth - leftMargin - rightMargin;
+  const svgHeight = topPad + plotHeight + xLabelHeight;
+  const colW = plotWidth / data.length;
+
+  const maxTotal = niceMax(Math.max(...data.map(d => d.total)));
+  const maxCount = niceMax(Math.max(...data.map(d => d.count)));
+
+  const yTicks = [0, 0.5, 1];
+  const gridLines = yTicks.map(t => {
+    const y = topPad + plotHeight - t*plotHeight;
+    return `<line x1="${leftMargin}" y1="${y}" x2="${leftMargin+plotWidth}" y2="${y}" stroke="var(--border)" stroke-width="1"/>
+      <text x="${leftMargin-2}" y="${y+3}" font-size="7" text-anchor="end" fill="var(--muted)">${fmtCompact(maxTotal*t)}</text>
+      <text x="${leftMargin+plotWidth+2}" y="${y+3}" font-size="7" text-anchor="start" fill="var(--muted)">${Math.round(maxCount*t)}</text>`;
+  }).join('');
+
+  let totalPoints = [], countPoints = [], xLabels = '';
+
+  const maxLabels = dualChartMode === 'semana' ? 7 : 6;
+  const n = data.length;
+  const labelIndices = new Set();
+  const count = Math.min(n, maxLabels);
+  if(count === 1){
+    labelIndices.add(0);
+  } else {
+    const gapsTotal = n - 1;
+    const numGaps = count - 1;
+    let idx = 0, carry = 0;
+    labelIndices.add(idx);
+    for(let g = 0; g < numGaps; g++){
+      carry += gapsTotal;
+      const step = Math.floor(carry / numGaps);
+      carry -= step * numGaps;
+      idx += step;
+      labelIndices.add(idx);
+    }
+  }
+
+  data.forEach((d, i) => {
+    const cx = leftMargin + i*colW + colW/2;
+
+    const totalY = topPad + plotHeight - (maxTotal > 0 ? (d.total/maxTotal)*plotHeight : 0);
+    totalPoints.push(`${cx},${totalY}`);
+
+    const countY = topPad + plotHeight - (maxCount > 0 ? (d.count/maxCount)*plotHeight : 0);
+    countPoints.push(`${cx},${countY}`);
+
+    if(labelIndices.has(i)){
+      xLabels += `<text x="${cx}" y="${topPad+plotHeight+16}" font-size="8" text-anchor="middle" fill="var(--ink)">${d.label}</text>`;
+    }
+  });
+
+  const svg = `
+    <svg viewBox="0 0 ${svgWidth} ${svgHeight}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      ${gridLines}
+      <polyline points="${totalPoints.join(' ')}" fill="none" stroke="var(--orange)" stroke-width="2"></polyline>
+      <polyline points="${countPoints.join(' ')}" fill="none" stroke="var(--navy)" stroke-width="2"></polyline>
+      ${xLabels}
+    </svg>`;
+
+  wrap.innerHTML = svg;
 }
 
-function toggleReportProductFilter(i){
-  const name = reportProductNames[i];
-  const el = document.getElementById(`rpf-${i}`);
-  if(reportProductFilter.has(name)){
-    reportProductFilter.delete(name);
-    el.classList.remove('checked');
-    el.textContent = '';
-  } else {
-    reportProductFilter.add(name);
-    el.classList.add('checked');
-    el.textContent = '✓';
-  }
-}
+function renderWeekdayChart(){
+  const dayLabels = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+  const totals = [0,0,0,0,0,0,0];
+  const dayKeys = [new Set(), new Set(), new Set(), new Set(), new Set(), new Set(), new Set()];
+  sales.forEach(s => {
+    const idx = (s.date.getDay() + 6) % 7; // 0=Lun ... 6=Dom
+    totals[idx] += s.total;
+    dayKeys[idx].add(`${s.date.getFullYear()}-${s.date.getMonth()}-${s.date.getDate()}`);
+  });
+  const averages = totals.map((t, i) => dayKeys[i].size > 0 ? t / dayKeys[i].size : 0);
+  const max = Math.max(...totals, 0.0001);
+  const todayIdx = (new Date().getDay() + 6) % 7;
 
-function openReportProductFilterModal(){
-  renderReportProductFilterList();
-  document.getElementById('reportProductFilterModal').classList.add('show');
-}
-function closeReportProductFilterModal(){
-  document.getElementById('reportProductFilterModal').classList.remove('show');
-}
-function clearReportProductFilter(){
-  reportProductFilter.clear();
-  renderReportProductFilterList();
-  updateReportProductFilterLabel();
-  closeReportProductFilterModal();
-  renderReport();
-}
-function applyReportProductFilter(){
-  updateReportProductFilterLabel();
-  closeReportProductFilterModal();
-  renderReport();
-}
-function updateReportProductFilterLabel(){
-  const label = document.getElementById('reportProductFilterLabel');
-  if(reportProductFilter.size === 0){
-    label.textContent = 'Todos';
-  } else if(reportProductFilter.size === 1){
-    label.textContent = [...reportProductFilter][0];
-  } else {
-    label.textContent = `${reportProductFilter.size} productos`;
-  }
-}
-function saleMatchesReportProduct(s){
-  if(reportProductFilter.size === 0) return true;
-  return s.itemsDetail.some(it => reportProductFilter.has(it.name));
+  const container = document.getElementById('weekdayChart');
+  container.innerHTML = dayLabels.map((label, i) => {
+    const pct = Math.round((totals[i] / max) * 100);
+    const isToday = i === todayIdx;
+    return `
+      <div class="weekday-bar-col">
+        <div class="weekday-bar-value">${averages[i] > 0 ? fmtCompact(averages[i]) : ''}</div>
+        <div class="weekday-bar-track">
+          <div class="weekday-bar-fill${isToday ? ' today' : ''}" style="height:${pct}%;"></div>
+        </div>
+        <div class="weekday-bar-label">${label}</div>
+      </div>`;
+  }).join('');
 }
 
 function renderReport(){
-  const filtered = sales.filter(s => saleMatchesReportDate(s) && saleMatchesReportProduct(s));
+  renderWeekdayChart();
+  renderDualChart();
+  const filtered = sales.filter(s => saleMatchesReportDate(s));
 
   const count = filtered.length;
   const totalSales = filtered.reduce((sum, s) => sum + s.total, 0);
@@ -1797,37 +1715,31 @@ function renderReport(){
   document.getElementById('kpiItems').textContent = totalItems;
 
   if(count === 0){
-    document.getElementById('insightTopProduct').textContent = 'Sin datos';
-    document.getElementById('insightTopCategory').textContent = 'Sin datos';
-    document.getElementById('insightTopPayment').textContent = 'Sin datos';
-    document.getElementById('insightOrderSplit').textContent = 'Sin datos';
+    document.getElementById('topProductsList').innerHTML = `<div class="empty-msg" style="padding:14px 0;">Sin datos.</div>`;
     return;
   }
 
-  const productQty = {};
-  const categoryQty = {};
+  const productStats = {};
   filtered.forEach(s => {
     s.itemsDetail.forEach(it => {
-      productQty[it.name] = (productQty[it.name] || 0) + it.qty;
-      categoryQty[it.cat] = (categoryQty[it.cat] || 0) + it.qty;
+      if(!productStats[it.name]) productStats[it.name] = { qty: 0, total: 0 };
+      productStats[it.name].qty += it.qty;
+      productStats[it.name].total += it.price * it.qty;
     });
   });
-  const topProduct = Object.entries(productQty).sort((a,b) => b[1]-a[1])[0];
-  const topCategory = Object.entries(categoryQty).sort((a,b) => b[1]-a[1])[0];
+  const topProducts = Object.entries(productStats)
+    .sort((a, b) => b[1].qty - a[1].qty)
+    .slice(0, 8);
 
-  const paymentCount = {};
-  filtered.forEach(s => { paymentCount[s.paymentMethod] = (paymentCount[s.paymentMethod] || 0) + 1; });
-  const topPayment = Object.entries(paymentCount).sort((a,b) => b[1]-a[1])[0];
-
-  const dineIn = filtered.filter(s => s.orderType !== 'llevar').length;
-  const takeout = filtered.filter(s => s.orderType === 'llevar').length;
-  const dineInPct = Math.round((dineIn / count) * 100);
-  const takeoutPct = 100 - dineInPct;
-
-  document.getElementById('insightTopProduct').textContent = topProduct ? `${topProduct[0]} (${topProduct[1]} vendidos)` : 'Sin datos';
-  document.getElementById('insightTopCategory').textContent = topCategory ? `${topCategory[0]} (${topCategory[1]} vendidos)` : 'Sin datos';
-  document.getElementById('insightTopPayment').textContent = topPayment ? `${topPayment[0]} (${topPayment[1]} ventas)` : 'Sin datos';
-  document.getElementById('insightOrderSplit').textContent = `Aquí ${dineInPct}% · Llevar ${takeoutPct}%`;
+  document.getElementById('topProductsList').innerHTML = topProducts.map(([name, stats], i) => `
+    <div class="top-product-row">
+      <div class="top-product-rank">${i+1}</div>
+      <div class="top-product-info">
+        <div class="top-product-name">${escapeHtml(name)}</div>
+        <div class="top-product-qty">${stats.qty} vendidos</div>
+      </div>
+      <div class="top-product-total">${fmt(stats.total)}</div>
+    </div>`).join('');
 }
 
 function renderSaleList(){
@@ -1836,29 +1748,27 @@ function renderSaleList(){
     list.innerHTML = `<div class="empty-msg">Aún no hay ventas registradas.<br>Toca "Nueva Venta" para comenzar.</div>`;
     return;
   }
-  const term = (document.getElementById('transSearchInput')?.value || '').trim().toLowerCase();
-  const filtered = sales.filter(s => saleMatchesSearch(s, term) && saleMatchesDate(s) && saleMatchesStructuredFilters(s));
+  const filtered = sales.filter(s => saleMatchesDate(s));
   if(filtered.length === 0){
-    list.innerHTML = `<div class="empty-msg">No se encontraron ventas con esos filtros.</div>`;
+    list.innerHTML = `<div class="empty-msg">No se encontraron ventas con ese filtro.</div>`;
     return;
   }
-  const icons = { 'Efectivo':'💵', 'Tarjeta':'💳', 'Transferencia':'🏦' };
-  list.innerHTML = filtered.map(s => {
-    const orderLabel = s.orderType === 'llevar' ? 'Para Llevar' : 'Para Comer Aquí';
-    return `
-    <div class="sale-item" onclick="openSaleDetail(${s.num})">
-      <div class="icon">${icons[s.paymentMethod] || '💵'}</div>
+  list.innerHTML = filtered.map(s => `
+    <div class="sale-item" onclick="handleSaleTap(${s.num})"
+         onmousedown="startSalePress(${s.num})" onmouseup="cancelSalePress()" onmouseleave="cancelSalePress()"
+         ontouchstart="startSalePress(${s.num})" ontouchend="cancelSalePress()" ontouchcancel="cancelSalePress()" ontouchmove="cancelSalePress()"
+         oncontextmenu="return false;">
+      <div class="icon">💵</div>
       <div class="mid">
-        <div class="tag">Venta #${s.num} · ${orderLabel}</div>
-        <div class="name">Pago: ${s.paymentMethod}</div>
+        <div class="tag">Venta #${s.num}</div>
+        <div class="name">${s.items} artículo${s.items === 1 ? '' : 's'}</div>
         <div class="date">${formatSaleDate(s.date)}</div>
       </div>
       <div class="right">
         <div class="amount">${fmt(s.total)}</div>
         <div class="status-pill">Pagado</div>
       </div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 
 /* ---------------- FILTRO POR FECHA ---------------- */
@@ -1925,33 +1835,298 @@ function applyDateFilter(){
 }
 
 /* ---------------- DETALLE DE VENTA ---------------- */
+/* ---------------- PRESIÓN LARGA SOBRE UNA VENTA (editar/eliminar) ---------------- */
+let salePressTimer = null;
+let salePressTriggered = false;
+
+function startSalePress(num){
+  cancelSalePress();
+  salePressTriggered = false;
+  salePressTimer = setTimeout(() => {
+    salePressTriggered = true;
+    openSaleActionModal(num);
+  }, 3000);
+}
+function cancelSalePress(){
+  if(salePressTimer){ clearTimeout(salePressTimer); salePressTimer = null; }
+}
+function handleSaleTap(num){
+  if(salePressTriggered){ salePressTriggered = false; return; }
+  openSaleDetail(num);
+}
+
+let saleActionNum = null;
+let editingSaleNum = null;
+
+function openSaleActionModal(num){
+  saleActionNum = num;
+  document.getElementById('saleActionTitle').textContent = `Venta #${num}`;
+  document.getElementById('saleActionModal').classList.add('show');
+  if(navigator.vibrate) navigator.vibrate(40);
+}
+function closeSaleActionModal(){
+  document.getElementById('saleActionModal').classList.remove('show');
+}
+function confirmDeleteSaleFromAction(){
+  sales = sales.filter(sale => sale.num !== saleActionNum);
+  closeSaleActionModal();
+  renderSaleList();
+  showToast('Venta eliminada');
+  saveState();
+}
+function confirmEditSaleFromAction(){
+  const num = saleActionNum;
+  closeSaleActionModal();
+  startEditSale(num);
+}
+
+function startEditSale(num){
+  const s = sales.find(sale => sale.num === num);
+  if(!s) return;
+  const hadUnsaved = Object.keys(cart).length > 0 && editingSaleNum !== num;
+  cart = {};
+  let missingCount = 0;
+  s.itemsDetail.forEach(it => {
+    const p = products.find(pr => pr.name === it.name);
+    if(p){ cart[p.id] = (cart[p.id] || 0) + it.qty; }
+    else { missingCount++; }
+  });
+  editingSaleNum = num;
+  goTo('screen-pos');
+  renderProducts();
+  renderCartBar();
+  const baseMsg = missingCount > 0
+    ? `${missingCount} artículo(s) ya no existen y no se cargaron`
+    : `Editando Venta #${num}`;
+  showToast((hadUnsaved ? '⚠️ Se descartó tu selección sin guardar. ' : '') + baseMsg);
+}
+
+function saveEditedSale(){
+  if(Object.keys(cart).length === 0){
+    showToast('Agrega al menos un producto, o elimina la venta desde Transacciones.');
+    return;
+  }
+  const s = sales.find(sale => sale.num === editingSaleNum);
+  if(!s){ editingSaleNum = null; quickConfirmSale(); return; }
+  const itemsDetail = Object.keys(cart).map(id => {
+    const p = products.find(pr => pr.id == id);
+    return { name: p.name, cat: p.cat, qty: cart[id], price: p.price };
+  });
+  s.itemsDetail = itemsDetail;
+  s.items = itemsDetail.reduce((sum, it) => sum + it.qty, 0);
+  s.total = itemsDetail.reduce((sum, it) => sum + it.price*it.qty, 0);
+  editingSaleNum = null;
+  cart = {};
+  renderProducts();
+  renderCartBar();
+  showToast('Venta actualizada');
+  goTo('screen-trans');
+  saveState();
+}
+
+function handleConfirmButton(){
+  if(editingSaleNum !== null){ saveEditedSale(); return; }
+  if(editingPendingNum !== null){ confirmPendingAsSale(editingPendingNum); return; }
+  quickConfirmSale();
+}
+
+function handlePendingButton(){
+  if(Object.keys(cart).length === 0) return;
+  if(editingPendingNum !== null) updatePendingOrder(editingPendingNum);
+  else createPendingOrder();
+}
+
+function buildItemsDetailFromCart(){
+  return Object.keys(cart).map(id => {
+    const p = products.find(pr => pr.id == id);
+    return { name: p.name, cat: p.cat, qty: cart[id], price: p.price };
+  });
+}
+
+function createPendingOrder(){
+  const itemsDetail = buildItemsDetailFromCart();
+  const items = itemsDetail.reduce((sum, it) => sum + it.qty, 0);
+  const total = itemsDetail.reduce((sum, it) => sum + it.price*it.qty, 0);
+  pendingOrders.unshift({ num: pendingCounter, itemsDetail, items, total, date: new Date() });
+  pendingCounter++;
+  cart = {};
+  renderProducts();
+  renderCartBar();
+  updatePendingBadge();
+  showToast('Pedido guardado como pendiente');
+  saveState();
+}
+
+function updatePendingOrder(num){
+  const p = pendingOrders.find(o => o.num === num);
+  if(!p){ editingPendingNum = null; createPendingOrder(); return; }
+  const itemsDetail = buildItemsDetailFromCart();
+  p.itemsDetail = itemsDetail;
+  p.items = itemsDetail.reduce((sum, it) => sum + it.qty, 0);
+  p.total = itemsDetail.reduce((sum, it) => sum + it.price*it.qty, 0);
+  editingPendingNum = null;
+  cart = {};
+  renderProducts();
+  renderCartBar();
+  updatePendingBadge();
+  showToast('Pedido pendiente actualizado');
+  goTo('screen-pending');
+  saveState();
+}
+
+function modifyPendingOrder(num){
+  const p = pendingOrders.find(o => o.num === num);
+  if(!p) return;
+  const hadUnsaved = Object.keys(cart).length > 0 && editingPendingNum !== num;
+  cart = {};
+  let missingCount = 0;
+  p.itemsDetail.forEach(it => {
+    const pr = products.find(x => x.name === it.name);
+    if(pr){ cart[pr.id] = (cart[pr.id] || 0) + it.qty; }
+    else { missingCount++; }
+  });
+  editingPendingNum = num;
+  goTo('screen-pos');
+  renderProducts();
+  renderCartBar();
+  const baseMsg = missingCount > 0
+    ? `${missingCount} artículo(s) ya no existen y no se cargaron`
+    : `Modificando Pendiente #${num}`;
+  showToast((hadUnsaved ? '⚠️ Se descartó tu selección sin guardar. ' : '') + baseMsg);
+}
+
+function confirmPendingAsSale(num){
+  const p = pendingOrders.find(o => o.num === num);
+  if(!p) return;
+  const usingCart = editingPendingNum === num && Object.keys(cart).length > 0;
+  const itemsDetail = usingCart ? buildItemsDetailFromCart() : p.itemsDetail;
+  const items = itemsDetail.reduce((sum, it) => sum + it.qty, 0);
+  const total = itemsDetail.reduce((sum, it) => sum + it.price*it.qty, 0);
+  sales.unshift({ num: saleCounter, total, items, itemsDetail, date: new Date() });
+  saleCounter++;
+  pendingOrders = pendingOrders.filter(o => o.num !== num);
+  if(pendingOrders.length === 0) pendingCounter = 1;
+  editingPendingNum = null;
+  cart = {};
+  renderProducts();
+  renderCartBar();
+  updatePendingBadge();
+  closePendingDetail();
+  showToast('Venta confirmada');
+  goTo('screen-trans');
+  saveState();
+}
+
+function updatePendingBadge(){
+  const badge = document.getElementById('pendingBadge');
+  if(pendingOrders.length > 0){
+    badge.hidden = false;
+    badge.textContent = pendingOrders.length;
+  } else {
+    badge.hidden = true;
+  }
+}
+
+function renderPendingList(){
+  updatePendingBadge();
+  const list = document.getElementById('pendingList');
+  if(pendingOrders.length === 0){
+    list.innerHTML = `<div class="empty-msg">No hay pedidos pendientes.<br>Selecciona productos y toca "Pendiente" para guardar uno.</div>`;
+    return;
+  }
+  list.innerHTML = pendingOrders.map(p => `
+    <div class="sale-item" onclick="handlePendingTap(${p.num})"
+         onmousedown="startPendingPress(${p.num})" onmouseup="cancelPendingPress()" onmouseleave="cancelPendingPress()"
+         ontouchstart="startPendingPress(${p.num})" ontouchend="cancelPendingPress()" ontouchcancel="cancelPendingPress()" ontouchmove="cancelPendingPress()"
+         oncontextmenu="return false;">
+      <div class="icon">📋</div>
+      <div class="mid">
+        <div class="tag">Pendiente #${p.num}</div>
+        <div class="name">${p.items} artículo${p.items === 1 ? '' : 's'}</div>
+        <div class="date">${formatSaleDate(p.date)}</div>
+      </div>
+      <div class="right">
+        <div class="amount">${fmt(p.total)}</div>
+        <div class="status-pill pending">Pendiente</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ---------------- PRESIÓN LARGA SOBRE UN PENDIENTE (eliminar) ---------------- */
+let pendingPressTimer = null;
+let pendingPressTriggered = false;
+
+function startPendingPress(num){
+  cancelPendingPress();
+  pendingPressTriggered = false;
+  pendingPressTimer = setTimeout(() => {
+    pendingPressTriggered = true;
+    openDeletePendingConfirm(num);
+  }, 3000);
+}
+function cancelPendingPress(){
+  if(pendingPressTimer){ clearTimeout(pendingPressTimer); pendingPressTimer = null; }
+}
+function handlePendingTap(num){
+  if(pendingPressTriggered){ pendingPressTriggered = false; return; }
+  openPendingDetail(num);
+}
+
+let deletePendingNum = null;
+
+function openDeletePendingConfirm(num){
+  deletePendingNum = num;
+  document.getElementById('deletePendingTitle').textContent = `¿Eliminar Pendiente #${num}?`;
+  document.getElementById('deletePendingModal').classList.add('show');
+  if(navigator.vibrate) navigator.vibrate(40);
+}
+function closeDeletePendingConfirm(){
+  document.getElementById('deletePendingModal').classList.remove('show');
+}
+function confirmDeletePending(){
+  pendingOrders = pendingOrders.filter(o => o.num !== deletePendingNum);
+  if(pendingOrders.length === 0) pendingCounter = 1;
+  closeDeletePendingConfirm();
+  renderPendingList();
+  showToast('Pendiente eliminado');
+  saveState();
+}
+
+let pendingDetailNum = null;
+
+function openPendingDetail(num){
+  const p = pendingOrders.find(o => o.num === num);
+  if(!p) return;
+  pendingDetailNum = num;
+  document.getElementById('pendingDetailTitle').textContent = `Pendiente #${p.num}`;
+  document.getElementById('pendingDetailDate').textContent = formatSaleDate(p.date);
+  document.getElementById('pendingDetailItems').innerHTML = p.itemsDetail.map(it =>
+    `<div class="billing-item"><span><span class="qty">${it.qty}x</span>${escapeHtml(it.name)}</span><span>${fmt(it.price*it.qty)}</span></div>`
+  ).join('');
+  document.getElementById('pendingDetailTotal').textContent = fmt(p.total);
+  document.getElementById('pendingDetailModal').classList.add('show');
+}
+function closePendingDetail(){
+  document.getElementById('pendingDetailModal').classList.remove('show');
+}
+function confirmPendingFromDetail(){
+  confirmPendingAsSale(pendingDetailNum);
+}
+function modifyPendingFromDetail(){
+  const num = pendingDetailNum;
+  closePendingDetail();
+  modifyPendingOrder(num);
+}
+
 function openSaleDetail(num){
   const s = sales.find(sale => sale.num === num);
   if(!s) return;
   document.getElementById('detailTitle').textContent = `Venta #${s.num}`;
   document.getElementById('detailDate').textContent = formatSaleDate(s.date);
-  document.getElementById('detailOrderType').textContent = s.orderType === 'llevar' ? 'Para Llevar' : 'Para Comer Aquí';
   document.getElementById('detailItems').innerHTML = s.itemsDetail.map(it =>
     `<div class="billing-item"><span><span class="qty">${it.qty}x</span>${escapeHtml(it.name)}</span><span>${fmt(it.price*it.qty)}</span></div>`
   ).join('');
-  const chargesWrap = document.getElementById('detailChargesWrap');
-  if(s.extraCharges && s.extraCharges.length){
-    chargesWrap.style.display = 'block';
-    document.getElementById('detailCharges').innerHTML = s.extraCharges.map(c =>
-      `<div class="billing-item"><span>${escapeHtml(c.concept)}</span><span>${fmt(c.amount)}</span></div>`
-    ).join('');
-  } else {
-    chargesWrap.style.display = 'none';
-  }
-  const noteWrap = document.getElementById('detailNoteWrap');
-  if(s.note){
-    noteWrap.style.display = 'block';
-    document.getElementById('detailNote').textContent = s.note;
-  } else {
-    noteWrap.style.display = 'none';
-  }
   document.getElementById('detailTotal').textContent = fmt(s.total);
-  document.getElementById('detailPayment').textContent = s.paymentMethod;
   document.getElementById('saleDetailModal').classList.add('show');
 }
 function closeSaleDetail(){
@@ -1990,17 +2165,46 @@ function setCustomTheme(hex){
 
 /* ---------------- CONFIGURACIÓN: COLOR DE FONDO ---------------- */
 let bgColor = '#F4E9DC';
+let darkMode = false;
+
+const lightPalette = { card:'#FFFFFF', ink:'#2E2A26', muted:'#9A9086', border:'#EFE4D6', shadow:'0 10px 24px rgba(46,42,38,0.08)' };
+const darkPalette = { bg:'#1C1A18', bgDeep:'#262320', card:'#2A2622', ink:'#F0EAE2', muted:'#A8A099', border:'#3A352F', shadow:'0 10px 24px rgba(0,0,0,0.35)' };
 
 function applyBgColor(hex){
   bgColor = hex;
-  document.documentElement.style.setProperty('--cream', hex);
-  document.documentElement.style.setProperty('--cream-deep', shadeHexColor(hex, -8));
   const trigger = document.getElementById('bgColorTrigger');
   if(trigger) trigger.style.background = hex;
+  if(!darkMode){
+    document.documentElement.style.setProperty('--cream', hex);
+    document.documentElement.style.setProperty('--cream-deep', shadeHexColor(hex, -8));
+  }
 }
 
 function setCustomBackground(hex){
   applyBgColor(hex);
+  saveState();
+}
+
+function applyDarkMode(enabled){
+  darkMode = enabled;
+  const root = document.documentElement.style;
+  const p = enabled ? darkPalette : lightPalette;
+  root.setProperty('--cream', enabled ? darkPalette.bg : bgColor);
+  root.setProperty('--cream-deep', enabled ? darkPalette.bgDeep : shadeHexColor(bgColor, -8));
+  root.setProperty('--card', p.card);
+  root.setProperty('--ink', p.ink);
+  root.setProperty('--muted', p.muted);
+  root.setProperty('--border', p.border);
+  root.setProperty('--shadow', p.shadow);
+  document.documentElement.style.colorScheme = enabled ? 'dark' : 'light';
+  const offBtn = document.getElementById('darkModeOffBtn');
+  const onBtn = document.getElementById('darkModeOnBtn');
+  if(offBtn) offBtn.classList.toggle('active', !enabled);
+  if(onBtn) onBtn.classList.toggle('active', enabled);
+}
+
+function setDarkMode(enabled){
+  applyDarkMode(enabled);
   saveState();
 }
 
@@ -2074,7 +2278,6 @@ function closeCategoryModal(){
 function refreshAllCategoryViews(){
   renderCategories();
   renderProducts();
-  renderFilterCatList();
   renderCategoryManageList();
   saveState();
 }
@@ -2102,10 +2305,6 @@ function saveCategory(){
   if(idx !== -1) categories[idx] = name;
   products.forEach(p => { if(p.cat === catModalOldName) p.cat = name; });
   if(activeCat === catModalOldName) activeCat = name;
-  if(filterCategories.has(catModalOldName)){
-    filterCategories.delete(catModalOldName);
-    filterCategories.add(name);
-  }
   closeCategoryModal();
   refreshAllCategoryViews();
   showToast('Categoría actualizada');
@@ -2124,7 +2323,6 @@ function deleteCategory(name){
   const idx = categories.indexOf(name);
   if(idx !== -1) categories.splice(idx, 1);
   if(activeCat === name) activeCat = categories[0];
-  filterCategories.delete(name);
   refreshAllCategoryViews();
   showToast('Categoría eliminada');
 }
@@ -2147,12 +2345,10 @@ function exportSalesData(){
     showToast('No hay ventas para exportar');
     return;
   }
-  const header = ['Venta #','Fecha','Pedido','Metodo de Pago','Articulos','Subtotal','Cargos Adicionales','Nota','Total'];
+  const header = ['Venta #','Fecha','Articulos','Total'];
   const rows = sales.map(s => {
-    const orderLabel = s.orderType === 'llevar' ? 'Para Llevar' : 'Para Comer Aqui';
     const itemsStr = s.itemsDetail.map(it => `${it.qty}x ${it.name}`).join(' | ');
-    const extraStr = s.extraCharges.map(c => `${c.concept}: ${fmt(c.amount)}`).join(' | ');
-    return [s.num, formatSaleDate(s.date), orderLabel, s.paymentMethod, itemsStr, s.subtotal.toFixed(2), extraStr, s.note || '', s.total.toFixed(2)];
+    return [s.num, formatSaleDate(s.date), itemsStr, s.total.toFixed(2)];
   });
   const csvLines = [header, ...rows].map(r =>
     r.map(field => `"${String(field).replace(/"/g,'""')}"`).join(',')
@@ -2181,7 +2377,6 @@ function closeResetConfirmModal(){
 function resetAllData(){
   sales = [];
   cart = {};
-  extraCharges = [];
   saleCounter = 1;
   closeResetConfirmModal();
   renderProducts();
@@ -2203,9 +2398,10 @@ loadState();
 renderCategories();
 renderProducts();
 renderCartBar();
-renderFilterCatList();
+updatePendingBadge();
 applyThemeColor(themeColor);
 applyBgColor(bgColor);
+applyDarkMode(darkMode);
 setTextSize(currentTextSize);if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
